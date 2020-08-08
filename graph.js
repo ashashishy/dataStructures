@@ -37,7 +37,24 @@ class Graph {
         })(start)
         return result;
     }
-
+    BFS(start){
+        const queue=[start];
+        const result=[];
+        const visited={};
+        let currentVertex;
+        
+        while(queue.length){
+            currentVertex=queue.shift();
+            result.push(currentVertex);
+            this.adjacencyList[currentVertex].forEach(neighbour=>{
+                if(![neighbour]){
+                    visited[neighbour]=true;
+                    queue.push(neighbour);
+                }
+            });
+        }
+        return result;
+    }
 }
 
 let g = new Graph();
